@@ -27,7 +27,7 @@ class WorkerCommand extends Command
      *
      * @param CommandSender $sender
      * @param string $commandLabel
-     * @param array $args
+     * @param array<int, string> $args
      * @return void
      * @throws ContentException
      */

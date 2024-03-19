@@ -50,7 +50,7 @@ class RenameFormTransfer extends ValidationFormTransfer implements TransferInter
         $newName  = $response->getInput()->getValue();
         $lastName = $response->getDropdown()->getSelectedOption();
 
-        $warnings =null;
+        $warnings = null;
 
         if (preg_match('[^\s*$]', $newName)) {
             $warnings[] = "please insert correct name";
