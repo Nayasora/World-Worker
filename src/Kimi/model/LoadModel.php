@@ -17,7 +17,7 @@ final class LoadModel extends Model
     /**
      * @return Closure
      */
-    protected function processResponse(): Closure
+    public function processResponse(): Closure
     {
         return function (Player $player, CustomFormResponse $customFormResponse): void {
             $response = BootFormTransfer::transfer($customFormResponse);
@@ -33,7 +33,7 @@ final class LoadModel extends Model
      * @return void
      * @throws ModelException|ContentException
      */
-    protected function execute(Player $player, TransferInterface $response): void
+    public function execute(Player $player, TransferInterface $response): void
     {
         $worldName = $response->getWorldName();
 

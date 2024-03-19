@@ -35,29 +35,6 @@ final class DeleteModel extends Model
 
 
     /**
-     * @return Closure
-     */
-    public function getConfirmationAction(): Closure
-    {
-        return function (Player $player, bool $choice): void {
-            $this->execute($player, ConfirmTransfer::transfer($choice));
-        };
-    }
-
-
-    /**
-     * @return Closure
-     */
-    public function getChooseAction(): Closure
-    {
-        return function (Player $player, CustomFormResponse $customFormResponse): void {
-            $this->worldName = BootFormTransfer::transfer($customFormResponse)->getWorldName();
-            $this->sendForm($player, new DeleteConfirmContent($this->worldName));
-        };
-    }
-
-
-    /**
      * @param Player $player
      * @param ConfirmTransfer $response
      * @return void
@@ -94,9 +71,32 @@ final class DeleteModel extends Model
 
 
     /**
+     * @return Closure
+     */
+    private function getConfirmationAction(): Closure
+    {
+        return function (Player $player, bool $choice): void {
+            $this->execute($player, ConfirmTransfer::transfer($choice));
+        };
+    }
+
+
+    /**
+     * @return Closure
+     */
+    private function getChooseAction(): Closure
+    {
+        return function (Player $player, CustomFormResponse $customFormResponse): void {
+            $this->worldName = BootFormTransfer::transfer($customFormResponse)->getWorldName();
+            $this->sendForm($player, new DeleteConfirmContent($this->worldName));
+        };
+    }
+
+
+    /**
      * @throws ModelException
      */
-    public function getLoadedWorld(string $worldName): World
+    private function getLoadedWorld(string $worldName): World
     {
         if (!$this->worldManager->isWorldLoaded($worldName)) {
             $this->worldManager->loadWorld($worldName);
@@ -114,15 +114,15 @@ final class DeleteModel extends Model
 
     /**
      * @param string $path
-     * @return bool
+     * @return void
      */
-    public function deleteFolder(string $path): bool
+    private function deleteFolder(string $path): void
     {
         $files = array_diff(scandir($path), array('.','..'));
 
         foreach ($files as $file) {
             (is_dir("$path/$file")) ? $this->deleteFolder("$path/$file") : unlink("$path/$file");
         }
-        return rmdir($path);
+        rmdir($path);
     }
 }

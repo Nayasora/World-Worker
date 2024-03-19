@@ -24,7 +24,7 @@ final class RenameModel extends Model
     /**
      * @return Closure
      */
-    protected function processResponse(): Closure
+    public function processResponse(): Closure
     {
         return function (Player $player, CustomFormResponse $customFormResponse) {
             $response = RenameFormTransfer::transfer($customFormResponse);
@@ -41,7 +41,7 @@ final class RenameModel extends Model
      * @throws ModelException
      * @throws ContentException
      */
-    protected function execute(Player $player, TransferInterface $response): void
+    public function execute(Player $player, TransferInterface $response): void
     {
         $lastName     = $response->getLastName();
         $newName      = $response->getNewName();

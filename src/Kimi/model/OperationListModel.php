@@ -22,7 +22,7 @@ final class OperationListModel extends Model
     /**
      * @return Closure
      */
-    protected function processResponse(): Closure
+    public function processResponse(): Closure
     {
         return fn (Player $player, Button $button) =>
             $this->execute($player, MainFormTransfer::transfer($button));
@@ -35,7 +35,7 @@ final class OperationListModel extends Model
      * @return void
      * @throws ContentException
      */
-    protected function execute(Player $player, TransferInterface $response): void
+    public function execute(Player $player, TransferInterface $response): void
     {
         $form = match ($response->getOperationName()) {
             OperationsList::GENERATE_NAME => (new Form(
