@@ -3,7 +3,7 @@
 namespace Kimi\model;
 
 use Closure;
-use http\Exception\InvalidArgumentException;
+use InvalidArgumentException;
 use Kimi\form\lib\menu\Button;
 use Kimi\exception\ContentException;
 use Kimi\form\content\custom\DeleteContent;

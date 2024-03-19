@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Kimi\form\lib\element;
 
 use InvalidArgumentException;
-use JetBrains\PhpStorm\Immutable;
 use pocketmine\form\FormValidationException;
 use function gettype;
 use function is_float;
