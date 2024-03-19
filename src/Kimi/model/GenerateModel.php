@@ -51,13 +51,17 @@ class GenerateModel extends Model
         $worldName = $response->getWorldName();
 
         if ($this->getWorldManager()->isWorldGenerated($worldName)) {
-            $this->sendPreventionForm($player, new GenerateContent(), ['world ' . $worldName . 'already generated']);
+            $this->sendPreventionForm($player, new GenerateContent(), ["world $worldName already generated"]);
             return;
         }
 
         $world = $this->generateNewWorld($worldName, $response);
         $world->setAutoSave($response->getAutoSave());
+
         $world->setTime($response->getTime());
+        if ($response->getStopTime()) {
+            $world->stopTime();
+        }
         $spawnLocation = $world->getSpawnLocation();
 
         if ($response->getTeleport()) {

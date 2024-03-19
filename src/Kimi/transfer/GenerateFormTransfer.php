@@ -7,13 +7,6 @@ use Kimi\form\lib\menu\Button;
 
 class GenerateFormTransfer extends ValidationFormTransfer implements TransferInterface
 {
-    private string $worldName;
-    private string $worldType;
-    private int    $worldDifficulty;
-    private bool   $autoSave;
-    private bool   $teleport;
-    private int    $time;
-
     /**
      * @param string $worldName
      * @param string $worldType
@@ -24,23 +17,17 @@ class GenerateFormTransfer extends ValidationFormTransfer implements TransferInt
      * @param array|null $warnings
      */
     public function __construct(
-        string $worldName,
-        string $worldType,
-        int    $worldDifficulty,
-        bool   $autoSave,
-        bool   $teleport,
-        int    $time,
-        array  $warnings = null
+        private readonly string $worldName,
+        private readonly string $worldType,
+        private readonly int    $worldDifficulty,
+        private readonly bool   $autoSave,
+        private readonly bool   $teleport,
+        private readonly int    $time,
+        private readonly bool   $stopTime,
+        readonly ?array         $warnings
     ) {
         parent::__construct($warnings);
-        $this->worldName        = $worldName;
-        $this->worldType        = $worldType;
-        $this->worldDifficulty  = $worldDifficulty;
-        $this->autoSave         = $autoSave;
-        $this->teleport         = $teleport;
-        $this->time				= $time;
     }
-
 
     /**
      * @return string
@@ -95,6 +82,14 @@ class GenerateFormTransfer extends ValidationFormTransfer implements TransferInt
         return $this->time;
     }
 
+    /**
+     * @return bool
+     */
+    public function getStopTime(): bool
+    {
+        return $this->stopTime;
+    }
+
 
     /**
      * @param bool|Button|CustomFormResponse $response
@@ -108,6 +103,8 @@ class GenerateFormTransfer extends ValidationFormTransfer implements TransferInt
         $autoSave        = $response->getToggle()->getValue();
         $teleport        = $response->getToggle()->getValue();
         $time 			 = $response->getSlider()->getValue();
+        $stopTime        = $response->getToggle()->getValue();
+
         $warnings = null;
 
         if (empty($worldName)) {
@@ -125,6 +122,7 @@ class GenerateFormTransfer extends ValidationFormTransfer implements TransferInt
             $autoSave,
             $teleport,
             $time,
+            $stopTime,
             $warnings
         );
     }

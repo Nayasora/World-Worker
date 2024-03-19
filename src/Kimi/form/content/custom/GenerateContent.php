@@ -28,7 +28,8 @@ class GenerateContent extends PreventionContent implements CustomContentInterfac
             $this->getDifficultyDropdown(),
             $this->getAutoSaveToggle(),
             $this->getTeleportToggle(),
-            $this->getTimeSlider()
+            $this->getTimeSlider(),
+            $this->getStopTimeToggle()
         ];
 
         if ($this->hasPrevention()) {
@@ -113,5 +114,13 @@ class GenerateContent extends PreventionContent implements CustomContentInterfac
     public function getTimeSlider(): Slider
     {
         return new Slider('set time', 0, World::TIME_FULL);
+    }
+
+    /**
+     * @return Toggle
+     */
+    public function getStopTimeToggle(): Toggle
+    {
+        return new Toggle('stop time', false);
     }
 }

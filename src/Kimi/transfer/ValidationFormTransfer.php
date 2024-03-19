@@ -4,13 +4,7 @@ namespace Kimi\transfer;
 
 class ValidationFormTransfer
 {
-    private ?array $warning;
-
-    public function __construct(array $warning = null)
-    {
-        $this->warning = $warning;
-    }
-
+    public function __construct(private readonly ?array $warning = null){}
 
     /**
      * @return array|null
