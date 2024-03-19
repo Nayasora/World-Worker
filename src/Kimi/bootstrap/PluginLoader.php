@@ -1,6 +1,6 @@
 <?php
 
-namespace Kimi;
+namespace Kimi\bootstrap;
 
 use Exception;
 use Kimi\command\CommandManager;
@@ -11,7 +11,7 @@ use pocketmine\plugin\PluginBase;
 /**
  * Entry point class.
  */
-class Manager extends PluginBase
+class PluginLoader extends PluginBase
 {
     /**
      * Initialize method.

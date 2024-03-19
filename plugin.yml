@@ -1,5 +1,5 @@
 name: World-Worker
-main: Kimi\Manager
+main: Kimi\bootstrap\PluginLoader
 version: 2
 api: 5.10.0
 author: Serenity-Sun
