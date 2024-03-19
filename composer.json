@@ -1,0 +1,14 @@
+{
+	"require": {
+		"pocketmine/pocketmine-mp": "@stable"
+	},
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "@dev",
+        "phpstan/phpstan": "@dev"
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Kimi\\": "src/Kimi"
+		}
+	}
+}

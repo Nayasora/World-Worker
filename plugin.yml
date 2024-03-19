@@ -1,0 +1,9 @@
+name: World-Worker
+main: Kimi\Manager
+version: 2
+api: 5.0.0
+author: Serenity-Sun
+permissions:
+  worker.command:
+    default: op
+    description: open world-worker form
