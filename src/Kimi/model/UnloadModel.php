@@ -12,12 +12,12 @@ use Kimi\transfer\BootFormTransfer;
 use Kimi\transfer\TransferInterface;
 use pocketmine\player\Player;
 
-class UnloadModel extends Model
+final class UnloadModel extends Model
 {
     /**
      * @return Closure
      */
-    public function processResponse(): Closure
+    protected function processResponse(): Closure
     {
         return function (Player $player, CustomFormResponse $customFormResponse): void {
             $response = BootFormTransfer::transfer($customFormResponse);
@@ -33,7 +33,7 @@ class UnloadModel extends Model
      * @return void
      * @throws ModelException|ContentException
      */
-    public function execute(Player $player, TransferInterface $response): void
+    protected function execute(Player $player, TransferInterface $response): void
     {
         $worldName = $response->getWorldName();
         $world     = $this->getWorldManager()->getWorldByName($worldName);

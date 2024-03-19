@@ -14,7 +14,7 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\world\format\io\data\BaseNbtWorldData;
 
-class RenameModel extends Model
+final class RenameModel extends Model
 {
     public function __construct()
     {
@@ -24,7 +24,7 @@ class RenameModel extends Model
     /**
      * @return Closure
      */
-    public function processResponse(): Closure
+    protected function processResponse(): Closure
     {
         return function (Player $player, CustomFormResponse $customFormResponse) {
             $response = RenameFormTransfer::transfer($customFormResponse);
@@ -41,7 +41,7 @@ class RenameModel extends Model
      * @throws ModelException
      * @throws ContentException
      */
-    public function execute(Player $player, TransferInterface $response): void
+    protected function execute(Player $player, TransferInterface $response): void
     {
         $lastName     = $response->getLastName();
         $newName      = $response->getNewName();
@@ -76,7 +76,7 @@ class RenameModel extends Model
      * @return bool
      * @throws ModelException|ContentException
      */
-    public function checkIsGenerated(Player $player, string $worldName): bool
+    private function checkIsGenerated(Player $player, string $worldName): bool
     {
         if (!$this->worldManager->isWorldGenerated($worldName)) {
             $this->sendPreventionForm($player, new RenameContent(), ["world by name {$worldName} not found"]);
@@ -93,7 +93,7 @@ class RenameModel extends Model
      * @return bool
      * @throws ModelException|ContentException
      */
-    public function unloadWorld(Player $player, string $worldName): bool
+    private function unloadWorld(Player $player, string $worldName): bool
     {
         $world = $this->worldManager->getWorldByName($worldName);
 
@@ -119,7 +119,7 @@ class RenameModel extends Model
      * @return void
      * @throws ModelException
      */
-    public function renameWorld(string $lastName, string $newName): void
+    private function renameWorld(string $lastName, string $newName): void
     {
         $worldPath = Server::getInstance()->getDataPath() . "worlds/";
         $renamed   = rename($worldPath.$lastName, $worldPath.$newName);

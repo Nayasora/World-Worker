@@ -17,12 +17,12 @@ use Kimi\transfer\MainFormTransfer;
 use Kimi\transfer\TransferInterface;
 use pocketmine\player\Player;
 
-class OperationListModel extends Model
+final class OperationListModel extends Model
 {
     /**
      * @return Closure
      */
-    public function processResponse(): Closure
+    protected function processResponse(): Closure
     {
         return fn (Player $player, Button $button) =>
             $this->execute($player, MainFormTransfer::transfer($button));
@@ -35,7 +35,7 @@ class OperationListModel extends Model
      * @return void
      * @throws ContentException
      */
-    public function execute(Player $player, TransferInterface $response): void
+    protected function execute(Player $player, TransferInterface $response): void
     {
         $form = match ($response->getOperationName()) {
             OperationsList::GENERATE_NAME => (new Form(

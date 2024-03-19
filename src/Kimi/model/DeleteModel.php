@@ -15,7 +15,7 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\world\World;
 
-class DeleteModel extends Model
+final class DeleteModel extends Model
 {
     private bool   $confirmed = false;
     private string $worldName;

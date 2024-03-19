@@ -3,6 +3,7 @@
 namespace Kimi\model;
 
 use Closure;
+use Kimi\exception\WorldGenerationException;
 use Kimi\form\lib\CustomFormResponse;
 use Kimi\exception\ContentException;
 use Kimi\exception\GeneratorException;
@@ -14,11 +15,11 @@ use Kimi\transfer\GenerateFormTransfer;
 use Kimi\transfer\TransferInterface;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\player\Player;
-use pocketmine\world\BlockTransaction;
+use pocketmine\world\format\Chunk;
 use pocketmine\world\World;
 use pocketmine\world\WorldCreationOptions;
 
-class GenerateModel extends Model
+final class GenerateModel extends Model
 {
     /**
      * @return Closure
@@ -66,15 +67,35 @@ class GenerateModel extends Model
 
         if ($response->getTeleport()) {
             $player->teleport($spawnLocation->up());
-
-            if ($response->getWorldType() === VoidGenerator::GENERATOR_NAME) {
-                $world->setBlock($player->getPosition()->down(2), VanillaBlocks::GRASS());
-            }
         }
+        $this->presetSpawn($response->getWorldType(), $world);
 
         $player->sendMessage("world $worldName successfully generated!");
     }
 
+    /**
+     * @param string $worldType
+     * @param World $world
+     * @return void
+     */
+    private function presetSpawn(string $worldType, World $world): void
+    {
+        $spawnLocation = $world->getSpawnLocation();
+        $worldName = $world->getFolderName();
+
+        if ($worldType == VoidGenerator::GENERATOR_NAME) {
+            $world->requestChunkPopulation(
+                $spawnLocation->getX() >> Chunk::COORD_BIT_SIZE,
+                $spawnLocation->getZ() >> Chunk::COORD_BIT_SIZE,
+                null
+            )->onCompletion(function () use ($world) {
+                $world->setBlock($world->getSpawnLocation()->asVector3(), VanillaBlocks::GRASS());
+            }, static function () use ($worldName) {
+                //не должно срабатывать
+                throw new WorldGenerationException('world '. $worldName . ' generation failed');
+            });
+        }
+    }
 
     /**
      * @param string $worldName
@@ -82,7 +103,7 @@ class GenerateModel extends Model
      * @return World
      * @throws GeneratorException
      */
-    public function generateNewWorld(string $worldName, GenerateFormTransfer $response): World
+    private function generateNewWorld(string $worldName, GenerateFormTransfer $response): World
     {
         $generatorManager = GeneratorManager::getInstance();
         $creationOptions = WorldCreationOptions::create();

@@ -68,7 +68,7 @@ abstract class Model
     /**
      * @return Closure
      */
-    abstract public function processResponse(): Closure;
+    abstract protected function processResponse(): Closure;
 
 
     /**
@@ -76,5 +76,5 @@ abstract class Model
      * @param TransferInterface $response
      * @return void
      */
-    abstract public function execute(Player $player, TransferInterface $response): void;
+    abstract protected function execute(Player $player, TransferInterface $response): void;
 }
