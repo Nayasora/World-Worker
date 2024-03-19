@@ -1,3 +1,5 @@
+[![](https://poggit.pmmp.io/shield.state/World-Worker)](https://poggit.pmmp.io/p/World-Worker)
+
 # World-Worker
 
 <img align="right" alt="icon.png" height="120px" src="icon.png" width="120px"/>
