@@ -68,7 +68,7 @@ class GenerateModel extends Model
             $player->teleport($spawnLocation->up());
 
             if ($response->getWorldType() === VoidGenerator::GENERATOR_NAME) {
-                (new BlockTransaction($world))->addBlock($spawnLocation->down(), VanillaBlocks::GRASS());
+                $world->setBlock($player->getPosition()->down(2), VanillaBlocks::GRASS());
             }
         }
 
