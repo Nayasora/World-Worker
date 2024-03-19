@@ -19,7 +19,7 @@ class PluginLoader extends PluginBase
      * @return void
      * @throws Exception
      */
-    public function onEnable(): void
+    public function onLoad(): void
     {
         $server = $this->getServer();
 
