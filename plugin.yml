@@ -1,7 +1,7 @@
 name: World-Worker
 main: Kimi\Manager
 version: 2
-api: 5.0.0
+api: 5.10.0
 author: Serenity-Sun
 permissions:
   worker.command:
