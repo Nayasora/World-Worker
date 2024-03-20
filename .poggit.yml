@@ -5,7 +5,7 @@ branches:
 projects:
   WorldWorker:
     path: ""
-    icon: "icon.png"
+    icon: icon.png
     lint:
       phpstan: true
       syntaxError: false
