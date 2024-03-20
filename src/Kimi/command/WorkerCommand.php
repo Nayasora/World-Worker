@@ -16,8 +16,8 @@ class WorkerCommand extends Command
     {
         parent::__construct(
             $name,
-            "§r открыть форму для работы с мирами",
-            "§r эта команда не требует аргументов"
+            "§r open operation list",
+            "§r this command not support any args"
         );
     }
 
@@ -34,6 +34,11 @@ class WorkerCommand extends Command
     public function execute(CommandSender $sender, string $commandLabel, array $args): void
     {
         if (!$sender instanceof Player) {
+            return;
+        }
+
+        if (!$sender->hasPermission('worker.command')) {
+            $sender->sendMessage("need a permission");
             return;
         }
 
