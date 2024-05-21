@@ -15,15 +15,15 @@ use function array_shift;
 
 class CustomFormResponse
 {
-    /** @phpstan-param list<BaseElement&\Kimi\WorldWorker\form\lib\element\BaseElementWithValue<mixed>> $elements */
+    /** @phpstan-param list<BaseElement&\SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue<mixed>> $elements */
     public function __construct(private array $elements)
     {
     }
 
     /**
      * @template T&BaseElement&element\BaseElementWithValue<mixed>
-     * @phpstan-param class-string<T&BaseElement&\Kimi\WorldWorker\form\lib\element\BaseElementWithValue<mixed>> $expected
-     * @phpstan-return T&BaseElement&\Kimi\WorldWorker\form\lib\element\BaseElementWithValue<mixed>
+     * @phpstan-param class-string<T&BaseElement&\SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue<mixed>> $expected
+     * @phpstan-return T&BaseElement&\SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue<mixed>
      * @throws \UnexpectedValueException
      */
     public function get(string $expected): BaseElement

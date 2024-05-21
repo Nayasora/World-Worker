@@ -3,8 +3,8 @@
 namespace SerenitySun\WorldWorker\generator;
 
 use Closure;
-use Kimi\WorldWorker\exception\GeneratorException;
-use Kimi\WorldWorker\exception\WorldGenerationException;
+use SerenitySun\WorldWorker\exception\GeneratorException;
+use SerenitySun\WorldWorker\exception\WorldGenerationException;
 use pocketmine\Server;
 use pocketmine\utils\SingletonTrait;
 use pocketmine\world\generator\GeneratorManager as KernelManager;

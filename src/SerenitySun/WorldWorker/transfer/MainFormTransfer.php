@@ -2,8 +2,8 @@
 
 namespace SerenitySun\WorldWorker\transfer;
 
-use Kimi\WorldWorker\form\lib\CustomFormResponse;
-use Kimi\WorldWorker\form\lib\menu\Button;
+use SerenitySun\WorldWorker\form\lib\CustomFormResponse;
+use SerenitySun\WorldWorker\form\lib\menu\Button;
 
 class MainFormTransfer implements TransferInterface
 {

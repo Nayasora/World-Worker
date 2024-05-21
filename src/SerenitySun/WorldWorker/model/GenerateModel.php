@@ -12,7 +12,7 @@ use SerenitySun\WorldWorker\form\lib\CustomFormResponse;
 use SerenitySun\WorldWorker\generator\GeneratorManager;
 use SerenitySun\WorldWorker\generator\VoidGenerator;
 use SerenitySun\WorldWorker\transfer\GenerateFormTransfer;
-use Kimi\WorldWorker\transfer\TransferInterface;
+use SerenitySun\WorldWorker\transfer\TransferInterface;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\player\Player;
 use pocketmine\world\format\Chunk;

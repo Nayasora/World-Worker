@@ -6,7 +6,7 @@ use SerenitySun\WorldWorker\form\component\WorldListComponent;
 use SerenitySun\WorldWorker\form\content\Content;
 use SerenitySun\WorldWorker\form\content\PreventionContent;
 use SerenitySun\WorldWorker\form\lib\element\Input;
-use Kimi\WorldWorker\OperationsList;
+use SerenitySun\WorldWorker\OperationsList;
 
 class RenameContent extends PreventionContent implements CustomContentInterface
 {

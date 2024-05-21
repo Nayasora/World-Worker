@@ -9,7 +9,7 @@ use SerenitySun\WorldWorker\exception\ModelException;
 use SerenitySun\WorldWorker\form\content\custom\RenameContent;
 use SerenitySun\WorldWorker\form\lib\CustomFormResponse;
 use SerenitySun\WorldWorker\transfer\RenameFormTransfer;
-use Kimi\WorldWorker\transfer\TransferInterface;
+use SerenitySun\WorldWorker\transfer\TransferInterface;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\world\format\io\data\BaseNbtWorldData;

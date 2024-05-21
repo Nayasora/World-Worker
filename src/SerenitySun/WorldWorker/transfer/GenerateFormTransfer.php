@@ -3,7 +3,7 @@
 namespace SerenitySun\WorldWorker\transfer;
 
 use SerenitySun\WorldWorker\form\lib\CustomFormResponse;
-use Kimi\WorldWorker\form\lib\menu\Button;
+use SerenitySun\WorldWorker\form\lib\menu\Button;
 
 class GenerateFormTransfer extends ValidationFormTransfer implements TransferInterface
 {
