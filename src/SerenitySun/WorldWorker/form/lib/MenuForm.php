@@ -16,7 +16,7 @@ use function is_null;
 class MenuForm extends BaseForm
 {
     /**
-     * @phpstan-param Button $buttons
+     * @phpstan-param array<int, Button> $buttons
      * @phpstan-param (Closure(Player, Button) : mixed)|null $onSubmit
      * @phpstan-param (Closure(Player) : mixed)|null $onClose
      */
