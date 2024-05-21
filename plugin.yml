@@ -1,9 +1,10 @@
 name: World-Worker
-main: Kimi\bootstrap\PluginLoader
+main: SerenitySun\WorldWorker\PluginLoader
+src-namespace-prefix: SerenitySun\WorldWorker
 version: 2
 api: 5.0.0
 author: Serenity-Sun
 permissions:
-  worker.command:
+  world-worker.worker:
     default: op
     description: open world-worker form
