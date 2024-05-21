@@ -1,40 +1,43 @@
+markdown
 [![](https://poggit.pmmp.io/shield.state/World-Worker)](https://poggit.pmmp.io/p/World-Worker)
 
 # World-Worker
 
 <img align="right" alt="icon.png" height="120px" src="icon.png" width="120px"/>
 
-**Плагин для управления мирами в PocketMine. С помощью этого плагина вы можете создавать новые миры с опциями генерации и выполнять другие операции над мирами. Для запуска плагин не требует сторонние плагины.**
+
+**A plugin designed for managing worlds in PocketMine. This plugin allows you to create new worlds with customizable generation options and perform various operations on these worlds. It operates independently and does not require any additional plugins to function.**
 
 #
-**Установка:**
+**Installation:**
 -
-> - загрузите последний релиз.
-> - поместите плагин в папку сервера `/ваш сервер/plugins/`
-> - перезапустите сервер
+> - Download the latest release.
+> - Place the plugin in the server directory `/your server/plugins/`
+> - Restart the server
 
-**Список операции:**
+**List of operations:**
 -
-- `generate` (создать мир)
-- `rename` (переименовать мир)
-- `delete` (удалить мир)
-- `load` (загрузить мир)
-- `unload` (выгрузить мир)
+- `generate` (create world)
+- `rename` (rename world)
+- `delete` (delete world)
+- `load` (load world)
+- `unload` (unload world)
 
-**Презентация:**
+**Presentation:**
 -
 
-### список операции формы
-![создание нового мира](.github/resources/list.png)
+### List of operation forms
+![create new world](.github/resources/list.png)
 
-### форма создания
-![создание нового мира](.github/resources/generate.png)
+### Generation form
+![create new world](.github/resources/generate.png)
 
-### форма переименования
-![создание нового мира](.github/resources/rename.png)
+### Rename form
+![rename world](.github/resources/rename.png)
 
 
-**ссылки разработчика:**
+**Developer links:**
 -
 - [PocketMine-MP](https://github.com/pmmp/PocketMine-MP)
 - [DevTools](https://github.com/pmmp/DevTools/)
+```
