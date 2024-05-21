@@ -4,7 +4,8 @@ branches:
 - master
 projects:
   WorldWorker:
-    main: SerenitySun\WorldWorker\PluginLoader
+    src:
+      - src
     path: ""
     icon: icon.png
     lint:
