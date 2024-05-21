@@ -4,8 +4,6 @@ branches:
 - master
 projects:
   WorldWorker:
-    src:
-      - src
     path: ""
     icon: icon.png
     lint:

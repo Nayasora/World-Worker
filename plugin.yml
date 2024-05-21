@@ -1,6 +1,5 @@
 name: World-Worker
 main: SerenitySun\WorldWorker\PluginLoader
-src-namespace-prefix: SerenitySun\WorldWorker
 version: 2
 api: 5.0.0
 author: Serenity-Sun
