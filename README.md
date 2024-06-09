@@ -1,4 +1,3 @@
-markdown
 [![](https://poggit.pmmp.io/shield.state/World-Worker)](https://poggit.pmmp.io/p/World-Worker)
 
 # World-Worker
