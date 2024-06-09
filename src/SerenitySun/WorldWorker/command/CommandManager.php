@@ -16,7 +16,7 @@ class CommandManager
     public function registerCommands(CommandMap $map): void
     {
         $workerCommand = new WorkerCommand("worker");
-        $workerCommand->setPermission('worker.command');
-        $map->register("worker", $workerCommand);
+        $workerCommand->setPermission('world-worker.worker');
+        $map->register("World-Worker", $workerCommand);
     }
 }
