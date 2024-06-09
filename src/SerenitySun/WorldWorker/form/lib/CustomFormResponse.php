@@ -5,34 +5,36 @@ declare(strict_types=1);
 namespace SerenitySun\WorldWorker\form\lib;
 
 use SerenitySun\WorldWorker\form\lib\element\BaseElement;
+use SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue;
 use SerenitySun\WorldWorker\form\lib\element\Dropdown;
 use SerenitySun\WorldWorker\form\lib\element\Input;
 use SerenitySun\WorldWorker\form\lib\element\Label;
 use SerenitySun\WorldWorker\form\lib\element\Slider;
 use SerenitySun\WorldWorker\form\lib\element\StepSlider;
 use SerenitySun\WorldWorker\form\lib\element\Toggle;
+use UnexpectedValueException;
 use function array_shift;
 
 class CustomFormResponse
 {
-    /** @phpstan-param list<BaseElement&\SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue<mixed>> $elements */
+    /** @phpstan-param list<BaseElement&BaseElementWithValue<mixed>> $elements */
     public function __construct(private array $elements)
     {
     }
 
     /**
      * @template T&BaseElement&element\BaseElementWithValue<mixed>
-     * @phpstan-param class-string<T&BaseElement&\SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue<mixed>> $expected
-     * @phpstan-return T&BaseElement&\SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue<mixed>
-     * @throws \UnexpectedValueException
+     * @phpstan-param class-string<T&BaseElement&BaseElementWithValue<mixed>> $expected
+     * @phpstan-return T&BaseElement&BaseElementWithValue<mixed>
+     * @throws UnexpectedValueException
      */
     public function get(string $expected): BaseElement
     {
         $element = array_shift($this->elements);
         return match (true) {
-            is_null($element) => throw new \UnexpectedValueException("There are no elements in the container"),
+            is_null($element) => throw new UnexpectedValueException("There are no elements in the container"),
             $element instanceof Label => $this->get($expected), //skip labels
-            !($element instanceof $expected) => throw new \UnexpectedValueException("Unexpected type of element"),
+            !($element instanceof $expected) => throw new UnexpectedValueException("Unexpected type of element"),
             default => $element,
         };
     }

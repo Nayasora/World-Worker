@@ -9,6 +9,7 @@ use SerenitySun\WorldWorker\form\lib\element\BaseElement;
 use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use pocketmine\utils\Utils;
+use SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue;
 use function count;
 use function gettype;
 use function is_array;
@@ -17,7 +18,7 @@ use function is_null;
 class CustomForm extends BaseForm
 {
     /**
-     * @phpstan-param list<BaseElement&\SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue<mixed>> $elements
+     * @phpstan-param list<BaseElement&BaseElementWithValue<mixed>> $elements
      * @phpstan-param Closure(Player, CustomFormResponse) : mixed $onSubmit
      * @phpstan-param (Closure(Player) : mixed)|null $onClose
      */
@@ -34,7 +35,7 @@ class CustomForm extends BaseForm
         parent::__construct($title);
     }
 
-    /** @phpstan-param BaseElement&\SerenitySun\WorldWorker\form\lib\element\BaseElementWithValue<mixed> ...$elements */
+    /** @phpstan-param BaseElement&BaseElementWithValue<mixed> ...$elements */
     public function appendElements(BaseElement ...$elements): void
     {
         foreach($elements as $element) {
